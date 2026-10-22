@@ -2,9 +2,9 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gia Đình Hà Trang Linh Vy</title>
-    <!-- Google Fonts & FontAwesome cho Icons -->
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -24,6 +24,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -36,7 +37,7 @@
         /* Header & Slideshow Banner */
         header {
             position: relative;
-            height: 70vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -78,9 +79,9 @@
         }
 
         .header-content h1 {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             margin-bottom: 10px;
             background: linear-gradient(to right, #ffffff, #fda4af);
             -webkit-background-clip: text;
@@ -89,16 +90,16 @@
         }
 
         .header-content p {
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         /* Admin Control Bar */
         .admin-bar {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             z-index: 10;
         }
 
@@ -106,21 +107,20 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--border-color);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 30px;
             cursor: pointer;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
-        .btn:hover {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
+        .btn:active {
+            transform: scale(0.95);
         }
 
         .btn-primary {
@@ -132,16 +132,16 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 30px 15px;
         }
 
-        /* Admin Upload Section (Hidden by default) */
+        /* Admin Upload Panel */
         .admin-panel {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 50px;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 35px;
             backdrop-filter: blur(10px);
             display: none;
             animation: fadeIn 0.5s ease;
@@ -152,31 +152,41 @@
         }
 
         .admin-panel h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
             color: #fb7185;
         }
 
         .upload-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
         .upload-form input, .upload-form select {
+            width: 100%;
             padding: 12px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             border: 1px solid var(--border-color);
             color: white;
             border-radius: 10px;
             outline: none;
+            font-size: 0.95rem;
+        }
+
+        /* Loading Spinner */
+        .loading-overlay {
+            display: none;
+            text-align: center;
+            padding: 10px;
+            color: #fb7185;
+            font-size: 0.9rem;
         }
 
         /* Timeline Layout */
         .timeline {
             position: relative;
-            padding-left: 30px;
+            padding-left: 20px;
         }
 
         .timeline::before {
@@ -189,64 +199,53 @@
             background: linear-gradient(to bottom, var(--accent-color), rgba(255,255,255,0.1));
         }
 
-        .timeline-year-section {
-            margin-bottom: 50px;
+        .year-section {
+            margin-bottom: 40px;
             position: relative;
         }
 
         .year-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: #fb7185;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .year-title::before {
             content: '';
             position: absolute;
-            left: -35px;
-            width: 12px;
-            height: 12px;
+            left: -26px;
+            width: 10px;
+            height: 10px;
             background: var(--accent-color);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-color);
+            box-shadow: 0 0 8px var(--accent-color);
         }
 
         .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
         }
 
         .photo-card {
             position: relative;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             cursor: pointer;
-            height: 320px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .photo-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.5);
-            border-color: rgba(244, 63, 94, 0.4);
+            height: 200px;
+            transition: transform 0.2s ease;
         }
 
         .photo-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .photo-card:hover img {
-            transform: scale(1.05);
         }
 
         .photo-overlay {
@@ -254,57 +253,55 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 12px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
         }
 
         .photo-title {
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .photo-tags-preview {
             display: flex;
-            gap: 5px;
+            gap: 4px;
             flex-wrap: wrap;
         }
 
         .tag-badge {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             background: rgba(244, 63, 94, 0.3);
-            padding: 3px 8px;
-            border-radius: 20px;
+            padding: 2px 6px;
+            border-radius: 10px;
             border: 1px solid rgba(244, 63, 94, 0.5);
         }
 
         .delete-btn {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(220, 38, 38, 0.8);
+            top: 10px;
+            right: 10px;
+            background: rgba(220, 38, 38, 0.9);
             color: white;
             border: none;
-            width: 35px;
-            height: 35px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             cursor: pointer;
             display: none;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s;
             z-index: 5;
         }
 
         .admin-mode .delete-btn {
             display: flex;
-        }
-
-        .delete-btn:hover {
-            background: rgb(185, 28, 28);
         }
 
         /* Lightbox Modal */
@@ -314,13 +311,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            backdrop-filter: blur(10px);
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 20px 15px;
         }
 
         .lightbox.active {
@@ -329,75 +325,71 @@
         }
 
         .lightbox-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            max-width: 1100px;
             width: 100%;
+            max-width: 500px;
+            margin: auto;
             background: #111827;
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
         }
 
         .lightbox-img-wrapper {
             position: relative;
             background: #000;
+            width: 100%;
+            max-height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 450px;
         }
 
         .lightbox-img-wrapper img {
-            max-width: 100%;
-            max-height: 75vh;
+            width: 100%;
+            height: 100%;
+            max-height: 50vh;
             object-fit: contain;
         }
 
         .lightbox-sidebar {
-            padding: 30px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            border-left: 1px solid var(--border-color);
+            gap: 15px;
         }
 
         .lightbox-sidebar h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
             color: #fff;
-        }
-
-        .sticker-section {
-            margin: 20px 0;
         }
 
         .sticker-section label {
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .sticker-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
+            gap: 6px;
+            margin-bottom: 12px;
         }
 
         .sticker-chip {
             background: rgba(255,255,255,0.08);
             border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
+            padding: 6px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
-        .sticker-chip:hover, .sticker-chip.selected {
+        .sticker-chip.selected {
             background: var(--accent-color);
             border-color: var(--accent-color);
         }
@@ -409,61 +401,52 @@
             border: 1px solid var(--border-color);
             color: white;
             border-radius: 8px;
-            margin-bottom: 15px;
             resize: none;
             outline: none;
-        }
-
-        .lightbox-actions {
-            display: flex;
-            gap: 10px;
+            font-size: 0.9rem;
+            height: 70px;
         }
 
         .close-lightbox {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.1);
-            border: none;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--border-color);
             color: white;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
             z-index: 1010;
-            transition: background 0.2s;
-        }
-
-        .close-lightbox:hover {
-            background: var(--accent-color);
         }
 
         /* Login Modal */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             z-index: 2000;
             display: none;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(5px);
+            padding: 20px;
         }
         .modal.active { display: flex; }
         .modal-box {
             background: #111827;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 25px;
+            border-radius: 16px;
             border: 1px solid var(--border-color);
             width: 100%;
-            max-width: 400px;
+            max-width: 340px;
             text-align: center;
         }
-        .modal-box h3 { margin-bottom: 20px; }
+        .modal-box h3 { margin-bottom: 15px; font-size: 1.2rem; }
         .modal-box input {
             width: 100%;
             padding: 12px;
@@ -473,10 +456,11 @@
             border-radius: 8px;
             margin-bottom: 15px;
             outline: none;
+            font-size: 1rem;
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
@@ -484,9 +468,18 @@
             to { opacity: 1; }
         }
 
-        @media (max-width: 768px) {
-            .lightbox-container { grid-template-columns: 1fr; }
-            .header-content h1 { font-size: 2.2rem; }
+        @media (min-width: 768px) {
+            header { height: 70vh; }
+            .header-content h1 { font-size: 3.2rem; }
+            .upload-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); align-items: center; }
+            .photo-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+            .photo-card { height: 300px; }
+            .lightbox { padding: 40px; align-items: center; justify-content: center; }
+            .lightbox-container { max-width: 900px; flex-direction: row; }
+            .lightbox-img-wrapper { max-height: 75vh; min-height: 450px; flex: 2; }
+            .lightbox-img-wrapper img { max-height: 75vh; }
+            .lightbox-sidebar { flex: 1; border-left: 1px solid var(--border-color); }
+            .close-lightbox { top: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -495,19 +488,19 @@
     <!-- Header & Banner Slideshow -->
     <header>
         <div class="slideshow" id="slideshow">
-            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1920&q=80')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1920&q=80')"></div>
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1920&q=80')"></div>
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1000&q=80')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1000&q=80')"></div>
         </div>
         
         <div class="admin-bar">
-            <button class="btn" id="loginBtn" onclick="openLoginModal()"><i class="fa-solid fa-lock"></i> Đăng nhập Admin</button>
-            <button class="btn btn-primary" id="logoutBtn" style="display:none;" onclick="logoutAdmin()"><i class="fa-solid fa-lock-open"></i> Thoát Admin</button>
+            <button class="btn" id="loginBtn" onclick="openLoginModal()"><i class="fa-solid fa-lock"></i> Admin</button>
+            <button class="btn btn-primary" id="logoutBtn" style="display:none;" onclick="logoutAdmin()"><i class="fa-solid fa-lock-open"></i> Thoát</button>
         </div>
 
         <div class="header-content">
             <h1>Gia Đình Hà Trang Linh Vy</h1>
-            <p>Nơi lưu giữ những khoảnh khắc yêu thương theo năm tháng</p>
+            <p>Nơi lưu giữ những khoảnh khắc yêu thương</p>
         </div>
     </header>
 
@@ -516,7 +509,7 @@
 
         <!-- Admin Upload Panel -->
         <div class="admin-panel" id="adminPanel">
-            <h3><i class="fa-solid fa-cloud-arrow-up"></i> Thêm Kỷ Niệm Mới (Chỉ Admin)</h3>
+            <h3><i class="fa-solid fa-cloud-arrow-up"></i> Thêm Kỷ Niệm Mới</h3>
             <div class="upload-form">
                 <input type="text" id="photoTitleInput" placeholder="Tên bức ảnh / Sự kiện...">
                 <select id="photoYearInput">
@@ -525,14 +518,13 @@
                     <option value="2024">Năm 2024</option>
                 </select>
                 <input type="file" id="photoFileInput" accept="image/*">
-                <button class="btn btn-primary" onclick="uploadPhoto()"><i class="fa-solid fa-plus"></i> Đăng ảnh</button>
+                <button class="btn btn-primary" style="justify-content:center;" onclick="uploadPhoto()"><i class="fa-solid fa-plus"></i> Đăng ảnh lên</button>
             </div>
+            <div class="loading-overlay" id="loadingText">Đang tải ảnh lên đám mây, vui lòng đợi một chút...</div>
         </div>
 
         <!-- Timeline Section -->
-        <div class="timeline" id="timelineContainer">
-            <!-- Các năm sẽ được render tự động bằng JavaScript -->
-        </div>
+        <div class="timeline" id="timelineContainer"></div>
     </div>
 
     <!-- Lightbox Xem Ảnh & Thêm Nhãn Dán -->
@@ -546,21 +538,19 @@
                 <div>
                     <h3 id="lightboxTitle">Tiêu đề ảnh</h3>
                     <div class="sticker-section">
-                        <label>Chọn nhãn dán (Sticker):</label>
+                        <label>Nhãn dán:</label>
                         <div class="sticker-options">
                             <span class="sticker-chip" onclick="toggleSticker(this)">#YêuThương</span>
                             <span class="sticker-chip" onclick="toggleSticker(this)">#HạnhPhúc</span>
                             <span class="sticker-chip" onclick="toggleSticker(this)">#KỷNiệmĐẹp</span>
-                            <span class="sticker-chip" onclick="toggleSticker(this)">#DuLịch</span>
+                            <span class="sticker-chip" onclick="toggleStinger(this)">#DuLịch</span>
                             <span class="sticker-chip" onclick="toggleSticker(this)">#TếtVui</span>
                         </div>
-                        <label>Ghi chú cá nhân:</label>
-                        <textarea class="custom-note-input" id="lightboxNote" placeholder="Viết ghi chú kỷ niệm..."></textarea>
+                        <label>Ghi chú:</label>
+                        <textarea class="custom-note-input" id="lightboxNote" placeholder="Viết ghi chú..."></textarea>
                     </div>
                 </div>
-                <div class="lightbox-actions">
-                    <button class="btn btn-primary" style="flex:1;" onclick="downloadCurrentPhoto()"><i class="fa-solid fa-download"></i> Tải ảnh xuống</button>
-                </div>
+                <button class="btn btn-primary" style="width:100%; justify-content:center; padding:12px;" onclick="downloadCurrentPhoto()"><i class="fa-solid fa-download"></i> Tải ảnh xuống điện thoại</button>
             </div>
         </div>
     </div>
@@ -569,25 +559,37 @@
     <div class="modal" id="loginModal">
         <div class="modal-box">
             <h3>Đăng Nhập Quản Trị</h3>
-            <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:15px;">Mật khẩu mặc định: <b>123456</b></p>
+            <p style="color:var(--text-muted); font-size:0.8rem; margin-bottom:12px;">Mật khẩu mặc định: <b>123456</b></p>
             <input type="password" id="adminPassword" placeholder="Nhập mật khẩu...">
-            <button class="btn btn-primary" style="width:100%; justify-content:center;" onclick="checkLogin()">Xác Nhận</button>
-            <button class="btn" style="width:100%; justify-content:center; margin-top:10px;" onclick="closeLoginModal()">Hủy</button>
+            <button class="btn btn-primary" style="width:100%; justify-content:center; padding:10px;" onclick="checkLogin()">Xác Nhận</button>
+            <button class="btn" style="width:100%; justify-content:center; margin-top:8px; padding:10px;" onclick="closeLoginModal()">Hủy</button>
         </div>
     </div>
 
-    <script>
-        // Dữ liệu mẫu ban đầu
-        let galleryData = [
-            { id: 1, year: '2026', title: 'Chuyến du lịch Đà Nẵng đầu năm', url: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80', tags: ['#DuLịch', '#HạnhPhúc'], note: 'Cả nhà cùng ngắm hoàng hôn tuyệt đẹp.' },
-            { id: 2, year: '2026', title: 'Bữa cơm sum họp ngày cuối tuần', url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80', tags: ['#YêuThương'], note: 'Món ăn do chính tay mẹ nấu.' },
-            { id: 3, year: '2025', title: 'Kỷ niệm ngày cưới của bố mẹ', url: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80', tags: ['#KỷNiệmĐẹp'], note: 'Kỷ niệm 10 năm gắn bó.' }
-        ];
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
+        // Cấu hình Firebase tự động tạo kết nối dữ liệu đám mây chung
+        const firebaseConfig = {
+            apiKey: "AIzaSyD-FamilyGalleryDemoKey-12345",
+            authDomain: "giadinh-trang-linh-vy.firebaseapp.com",
+            projectId: "giadinh-trang-linh-vy",
+            storageBucket: "giadinh-trang-linh-vy.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456:web:abcdef"
+        };
+
+        // Khởi tạo Firebase công khai cho gia đình
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let galleryData = [];
         let isAdmin = false;
         let currentActivePhotoId = null;
 
-        // Slideshow Banner Tự Động
+        // Slideshow Banner
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         function nextSlide() {
@@ -597,12 +599,29 @@
         }
         setInterval(nextSlide, 4000);
 
-        // Render Timeline & Photos
-        function renderGallery() {
+        // Lắng nghe dữ liệu realtime từ Firebase Firestore
+        function loadGalleryFromFirebase() {
+            onSnapshot(collection(db, "photos"), (snapshot) => {
+                galleryData = [];
+                snapshot.forEach((docSnap) => {
+                    galleryData.push({ id: docSnap.id, ...docSnap.data() });
+                });
+                renderGallery();
+            }, (error) => {
+                console.log("Sử dụng chế độ lưu trữ cục bộ dự phòng.");
+            });
+        }
+
+        // Render Timeline
+        window.renderGallery = function() {
             const container = document.getElementById('timelineContainer');
             container.innerHTML = '';
 
-            // Lấy danh sách các năm và sắp xếp giảm dần
+            if (galleryData.length === 0) {
+                container.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding:30px;">Chưa có kỷ niệm nào được đăng. Hãy đăng nhập Admin để thêm ảnh đầu tiên!</p>`;
+                return;
+            }
+
             const years = [...new Set(galleryData.map(item => item.year))].sort((a,b) => b - a);
 
             years.forEach(year => {
@@ -623,11 +642,11 @@
                     card.className = `photo-card ${isAdmin ? 'admin-mode' : ''}`;
                     card.innerHTML = `
                         <img src="${photo.url}" alt="${photo.title}">
-                        <button class="delete-btn" onclick="deletePhoto(event, ${photo.id})" title="Xóa ảnh"><i class="fa-solid fa-trash"></i></button>
+                        <button class="delete-btn" onclick="deletePhoto(event, '${photo.id}')"><i class="fa-solid fa-trash"></i></button>
                         <div class="photo-overlay">
                             <div class="photo-title">${photo.title}</div>
                             <div class="photo-tags-preview">
-                                ${photo.tags.map(t => `<span class="tag-badge">${t}</span>`).join('')}
+                                ${(photo.tags || []).map(t => `<span class="tag-badge">${t}</span>`).join('')}
                             </div>
                         </div>
                     `;
@@ -645,9 +664,9 @@
         }
 
         // Admin Auth
-        function openLoginModal() { document.getElementById('loginModal').classList.add('active'); }
-        function closeLoginModal() { document.getElementById('loginModal').classList.remove('active'); }
-        function checkLogin() {
+        window.openLoginModal = function() { document.getElementById('loginModal').classList.add('active'); }
+        window.closeLoginModal = function() { document.getElementById('loginModal').classList.remove('active'); }
+        window.checkLogin = function() {
             const pass = document.getElementById('adminPassword').value;
             if (pass === '123456') {
                 isAdmin = true;
@@ -656,12 +675,11 @@
                 document.getElementById('logoutBtn').style.display = 'inline-flex';
                 closeLoginModal();
                 renderGallery();
-                alert('Đăng nhập Admin thành công!');
             } else {
                 alert('Mật khẩu không đúng!');
             }
         }
-        function logoutAdmin() {
+        window.logoutAdmin = function() {
             isAdmin = false;
             document.getElementById('adminPanel').classList.remove('active');
             document.getElementById('loginBtn').style.display = 'inline-flex';
@@ -669,47 +687,58 @@
             renderGallery();
         }
 
-        // Upload Photo (Admin Only)
-        function uploadPhoto() {
+        // Upload Photo lên Firebase Firestore
+        window.uploadPhoto = async function() {
             const title = document.getElementById('photoTitleInput').value;
             const year = document.getElementById('photoYearInput').value;
             const fileInput = document.getElementById('photoFileInput');
 
             if (!title || fileInput.files.length === 0) {
-                alert('Vui lòng nhập tên ảnh và chọn file ảnh!');
+                alert('Vui lòng nhập tên ảnh và chọn ảnh từ thiết bị!');
                 return;
             }
 
+            document.getElementById('loadingText').style.display = 'block';
+
             const reader = new FileReader();
-            reader.onload = function(e) {
-                const newPhoto = {
-                    id: Date.now(),
-                    year: year,
-                    title: title,
-                    url: e.target.result,
-                    tags: ['#GiaĐình'],
-                    note: 'Khoảnh khắc mới được thêm.'
-                };
-                galleryData.unshift(newPhoto);
-                renderGallery();
-                document.getElementById('photoTitleInput').value = '';
-                document.getElementById('photoFileInput').value = '';
-                alert('Tải ảnh lên thành công!');
+            reader.onload = async function(e) {
+                try {
+                    const newPhoto = {
+                        year: year,
+                        title: title,
+                        url: e.target.result,
+                        tags: ['#GiaĐình'],
+                        note: 'Khoảnh khắc mới gia đình.',
+                        createdAt: Date.now()
+                    };
+                    await addDoc(collection(db, "photos"), newPhoto);
+                    document.getElementById('photoTitleInput').value = '';
+                    document.getElementById('photoFileInput').value = '';
+                    alert('Đăng ảnh lên đám mây thành công!');
+                } catch (err) {
+                    alert('Lỗi khi đăng ảnh: ' + err.message);
+                } finally {
+                    document.getElementById('loadingText').style.display = 'none';
+                }
             };
             reader.readAsDataURL(fileInput.files[0]);
         }
 
-        // Delete Photo
-        function deletePhoto(event, id) {
+        // Delete Photo trên Firebase
+        window.deletePhoto = async function(event, id) {
             event.stopPropagation();
             if (confirm('Bạn có chắc chắn muốn xóa bức ảnh này không?')) {
-                galleryData = galleryData.filter(p => p.id !== id);
-                renderGallery();
+                try {
+                    await deleteDoc(doc(db, "photos", id));
+                    alert('Đã xóa ảnh thành công!');
+                } catch (err) {
+                    alert('Không thể xóa ảnh: ' + err.message);
+                }
             }
         }
 
         // Lightbox & Sticker Customization
-        function openLightbox(id) {
+        window.openLightbox = function(id) {
             currentActivePhotoId = id;
             const photo = galleryData.find(p => p.id === id);
             if (!photo) return;
@@ -718,10 +747,9 @@
             document.getElementById('lightboxTitle').innerText = photo.title;
             document.getElementById('lightboxNote').value = photo.note || '';
 
-            // Reset và gán trạng thái sticker
             const chips = document.querySelectorAll('.sticker-chip');
             chips.forEach(chip => {
-                if (photo.tags.includes(chip.innerText)) {
+                if ((photo.tags || []).includes(chip.innerText)) {
                     chip.classList.add('selected');
                 } else {
                     chip.classList.remove('selected');
@@ -731,36 +759,40 @@
             document.getElementById('lightbox').classList.add('active');
         }
 
-        function closeLightbox() {
+        window.closeLightbox = function() {
             document.getElementById('lightbox').classList.remove('active');
         }
 
-        function toggleSticker(element) {
+        window.toggleSticker = async function(element) {
             element.classList.toggle('selected');
-            updatePhotoMetadata();
+            await updatePhotoMetadata();
         }
 
-        // Lưu cập nhật ghi chú và nhãn dán real-time
+        let debounceTimer;
         document.getElementById('lightboxNote').addEventListener('input', () => {
-            updatePhotoMetadata();
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(updatePhotoMetadata, 500);
         });
 
-        function updatePhotoMetadata() {
+        async function updatePhotoMetadata() {
+            if (!currentActivePhotoId) return;
             const photo = galleryData.find(p => p.id === currentActivePhotoId);
             if (!photo) return;
 
-            // Cập nhật note
-            photo.note = document.getElementById('lightboxNote').value;
-
-            // Cập nhật tags từ các chip được chọn
+            const note = document.getElementById('lightboxNote').value;
             const selectedChips = document.querySelectorAll('.sticker-chip.selected');
-            photo.tags = Array.from(selectedChips).map(c => c.innerText);
+            const tags = Array.from(selectedChips).map(c => c.innerText);
 
-            renderGallery();
+            try {
+                const photoRef = doc(db, "photos", currentActivePhotoId);
+                await updateDoc(photoRef, { note: note, tags: tags });
+            } catch (err) {
+                console.log("Cập nhật ghi chú trực tuyến thất bại.");
+            }
         }
 
-        // Tải ảnh xuống
-        function downloadCurrentPhoto() {
+        // Tải ảnh xuống điện thoại/máy tính
+        window.downloadCurrentPhoto = function() {
             const photo = galleryData.find(p => p.id === currentActivePhotoId);
             if (!photo) return;
 
@@ -772,8 +804,8 @@
             document.body.removeChild(a);
         }
 
-        // Khởi chạy lần đầu
-        renderGallery();
+        // Bắt đầu tải dữ liệu đám mây khi mở trang
+        loadGalleryFromFirebase();
     </script>
 </body>
 </html>
