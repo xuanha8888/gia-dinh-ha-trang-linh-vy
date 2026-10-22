@@ -543,7 +543,7 @@
                             <span class="sticker-chip" onclick="toggleSticker(this)">#YêuThương</span>
                             <span class="sticker-chip" onclick="toggleSticker(this)">#HạnhPhúc</span>
                             <span class="sticker-chip" onclick="toggleSticker(this)">#KỷNiệmĐẹp</span>
-                            <span class="sticker-chip" onclick="toggleStinger(this)">#DuLịch</span>
+                            <span class="sticker-chip" onclick="toggleSticker(this)">#DuLịch</span>
                             <span class="sticker-chip" onclick="toggleSticker(this)">#TếtVui</span>
                         </div>
                         <label>Ghi chú:</label>
@@ -566,22 +566,23 @@
         </div>
     </div>
 
-    <!-- Firebase SDKs -->
+    <!-- Firebase SDKs & Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Cấu hình Firebase tự động tạo kết nối dữ liệu đám mây chung
+        // Cấu hình Firebase thực tế của bạn
         const firebaseConfig = {
-            apiKey: "AIzaSyD-FamilyGalleryDemoKey-12345",
-            authDomain: "giadinh-trang-linh-vy.firebaseapp.com",
-            projectId: "giadinh-trang-linh-vy",
-            storageBucket: "giadinh-trang-linh-vy.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456:web:abcdef"
+            apiKey: "AIzaSyDxR0WB64Cpk_wqvuMg1IQWlK13nyXiUQQ",
+            authDomain: "giadinh-trang.firebaseapp.com",
+            databaseURL: "https://giadinh-trang-default-rtdb.firebaseio.com",
+            projectId: "giadinh-trang",
+            storageBucket: "giadinh-trang.firebasestorage.app",
+            messagingSenderId: "789981574238",
+            appId: "1:789981574238:web:916d71874fee4dd28030cf",
+            measurementId: "G-RX3KGX8775"
         };
 
-        // Khởi tạo Firebase công khai cho gia đình
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
@@ -599,7 +600,7 @@
         }
         setInterval(nextSlide, 4000);
 
-        // Lắng nghe dữ liệu realtime từ Firebase Firestore
+        // Lấy dữ liệu realtime từ Firebase Firestore
         function loadGalleryFromFirebase() {
             onSnapshot(collection(db, "photos"), (snapshot) => {
                 galleryData = [];
@@ -608,7 +609,7 @@
                 });
                 renderGallery();
             }, (error) => {
-                console.log("Sử dụng chế độ lưu trữ cục bộ dự phòng.");
+                console.log("Lỗi kết nối Firebase: ", error);
             });
         }
 
@@ -618,7 +619,7 @@
             container.innerHTML = '';
 
             if (galleryData.length === 0) {
-                container.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding:30px;">Chưa có kỷ niệm nào được đăng. Hãy đăng nhập Admin để thêm ảnh đầu tiên!</p>`;
+                container.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding:30px;">Chưa có kỷ niệm nào. Hãy đăng nhập Admin để thêm ảnh đầu tiên!</p>`;
                 return;
             }
 
@@ -787,11 +788,11 @@
                 const photoRef = doc(db, "photos", currentActivePhotoId);
                 await updateDoc(photoRef, { note: note, tags: tags });
             } catch (err) {
-                console.log("Cập nhật ghi chú trực tuyến thất bại.");
+                console.log("Cập nhật ghi chú thất bại.");
             }
         }
 
-        // Tải ảnh xuống điện thoại/máy tính
+        // Tải ảnh xuống
         window.downloadCurrentPhoto = function() {
             const photo = galleryData.find(p => p.id === currentActivePhotoId);
             if (!photo) return;
@@ -804,7 +805,7 @@
             document.body.removeChild(a);
         }
 
-        // Bắt đầu tải dữ liệu đám mây khi mở trang
+        // Khởi chạy tải dữ liệu
         loadGalleryFromFirebase();
     </script>
 </body>
